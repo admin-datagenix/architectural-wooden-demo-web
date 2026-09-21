@@ -216,21 +216,50 @@ a {
    min-height: 680px;
    position: relative;
    overflow: hidden;
-   background: linear-gradient(90deg, rgba(8, 13, 12, .96) 0%, rgba(8, 13, 12, .82) 38%, rgba(8, 13, 12, .15) 75%), url("https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=2000&q=90") center/cover;
+   background: #080d0c;
    color: #fff;
    display: flex;
    align-items: center;
-   padding: 90px 7%;
-   animation: heroBackground 14s ease-in-out infinite alternate
+   padding: 90px 7%
 }
 
-@keyframes heroBackground {
+.hero-slides {
+   position: absolute;
+   inset: 0;
+   z-index: 0
+}
+
+.hero-slides:after {
+   content: "";
+   position: absolute;
+   inset: 0;
+   z-index: 1;
+   background: linear-gradient(90deg, rgba(8, 13, 12, .96) 0%, rgba(8, 13, 12, .82) 38%, rgba(8, 13, 12, .15) 75%);
+   pointer-events: none
+}
+
+.hero-slide {
+   position: absolute;
+   inset: 0;
+   background-position: center;
+   background-size: cover;
+   opacity: 0;
+   transition: opacity 1.4s ease-in-out;
+   transform: scale(1)
+}
+
+.hero-slide.is-active {
+   opacity: 1;
+   animation: heroSlideZoom 14s ease-in-out infinite alternate
+}
+
+@keyframes heroSlideZoom {
    from {
-      background-size: 100%
+      transform: scale(1)
    }
 
    to {
-      background-size: 108%
+      transform: scale(1.08)
    }
 }
 
@@ -256,6 +285,7 @@ a {
 .hero-overlay {
    position: absolute;
    inset: 0;
+   z-index: 1;
    background: linear-gradient(180deg, transparent, rgba(0, 0, 0, .2));
    pointer-events: none
 }
@@ -1174,18 +1204,20 @@ a {
    font-weight: 600
 }
 
-.contact-links span {
+.contact-links a {
    display: flex;
    align-items: center;
    gap: 10px;
-   transition: .3s
+   transition: .3s;
+   text-decoration: none;
+   color: inherit
 }
 
-.contact-links span svg {
+.contact-links a svg {
    color: #b66e30
 }
 
-.contact-links span:hover {
+.contact-links a:hover {
    color: #b66e30;
    transform: translateX(7px)
 }
@@ -2180,21 +2212,22 @@ footer {
   transform:translateX(0);
 }
 
-.footer-contact span{
+.footer-contact > a:not(.footer-whatsapp){
   display:flex;
   align-items:center;
   gap:10px;
   color:#aaa;
   font-size:13px;
   transition:.35s;
+  text-decoration:none;
 }
 
-.footer-contact span svg{
+.footer-contact > a:not(.footer-whatsapp) svg{
   color:#b8753c;
   min-width:15px;
 }
 
-.footer-contact span:hover{
+.footer-contact > a:not(.footer-whatsapp):hover{
   color:#e8a663;
   transform:translateX(5px);
 }
@@ -2718,21 +2751,22 @@ footer {
   font-size:11px;
 }
 
-.footer-contact span{
+.footer-contact > a:not(.footer-whatsapp){
   display:flex;
   align-items:center;
   gap:10px;
   color:#aaa;
   font-size:13px;
   transition:.35s;
+  text-decoration:none;
 }
 
-.footer-contact span svg{
+.footer-contact > a:not(.footer-whatsapp) svg{
   color:#b8753c;
   min-width:15px;
 }
 
-.footer-contact span:hover{
+.footer-contact > a:not(.footer-whatsapp):hover{
   color:#e8a663;
   transform:translateX(5px);
 }

@@ -24,6 +24,20 @@ import {
 import { GiWoodenChair } from "react-icons/gi";
 import { MdArchitecture, MdDesignServices } from "react-icons/md";
 
+const CONTACT_PHONE_DISPLAY = "+91 98765 43210";
+const CONTACT_PHONE_HREF = "tel:+919876543210";
+const CONTACT_EMAIL = "hello@woodandspace.com";
+const CONTACT_EMAIL_HREF = "mailto:hello@woodandspace.com";
+const CONTACT_ADDRESS = "Pune, Maharashtra";
+const CONTACT_MAP_HREF =
+  "https://www.google.com/maps/search/?api=1&query=Pune%2C+Maharashtra";
+
+const HERO_BANNER_IMAGES = [
+  "https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=2000&q=90",
+  "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=2000&q=90",
+  "https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=2000&q=90",
+];
+
 /* =========================================================
    LOGO
 ========================================================= */
@@ -309,6 +323,7 @@ export default function Home() {
     useState<ProjectName | null>(null);
 
   const [activeSlide, setActiveSlide] = useState(0);
+  const [heroBannerIndex, setHeroBannerIndex] = useState(0);
 
   /* =======================================================
      SCROLL REVEAL
@@ -331,6 +346,20 @@ export default function Home() {
     items.forEach((item) => observer.observe(item));
 
     return () => observer.disconnect();
+  }, []);
+
+  /* =======================================================
+     HERO BANNER ROTATION
+  ======================================================= */
+
+  useEffect(() => {
+    const timer = window.setInterval(() => {
+      setHeroBannerIndex(
+        (current) => (current + 1) % HERO_BANNER_IMAGES.length
+      );
+    }, 3500);
+
+    return () => window.clearInterval(timer);
   }, []);
 
   /* =======================================================
@@ -419,6 +448,20 @@ export default function Home() {
       ===================================================== */}
 
       <section id="home" className="hero">
+
+        <div className="hero-slides" aria-hidden="true">
+          {HERO_BANNER_IMAGES.map((image, index) => (
+            <div
+              key={image}
+              className={
+                index === heroBannerIndex
+                  ? "hero-slide is-active"
+                  : "hero-slide"
+              }
+              style={{ backgroundImage: `url("${image}")` }}
+            />
+          ))}
+        </div>
 
         <div className="hero-overlay" />
 
@@ -992,20 +1035,24 @@ export default function Home() {
 
           <div className="contact-links">
 
-            <span>
+            <a href={CONTACT_PHONE_HREF}>
               <FaPhone />
-              +91 98765 43210
-            </span>
+              {CONTACT_PHONE_DISPLAY}
+            </a>
 
-            <span>
+            <a href={CONTACT_EMAIL_HREF}>
               <FaEnvelope />
-              hello@woodandspace.com
-            </span>
+              {CONTACT_EMAIL}
+            </a>
 
-            <span>
+            <a
+              href={CONTACT_MAP_HREF}
+              target="_blank"
+              rel="noreferrer"
+            >
               <FaLocationDot />
-              Pune, Maharashtra
-            </span>
+              {CONTACT_ADDRESS}
+            </a>
 
           </div>
 
@@ -1266,20 +1313,24 @@ export default function Home() {
               CONTACT
             </h4>
 
-            <span>
+            <a href={CONTACT_PHONE_HREF}>
               <FaPhone />
-              +91 98765 43210
-            </span>
+              {CONTACT_PHONE_DISPLAY}
+            </a>
 
-            <span>
+            <a href={CONTACT_EMAIL_HREF}>
               <FaEnvelope />
-              hello@woodandspace.com
-            </span>
+              {CONTACT_EMAIL}
+            </a>
 
-            <span>
+            <a
+              href={CONTACT_MAP_HREF}
+              target="_blank"
+              rel="noreferrer"
+            >
               <FaLocationDot />
-              Pune, Maharashtra
-            </span>
+              {CONTACT_ADDRESS}
+            </a>
 
 
             <a
