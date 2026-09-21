@@ -24,6 +24,8 @@ import {
 import { GiWoodenChair } from "react-icons/gi";
 import { MdArchitecture, MdDesignServices } from "react-icons/md";
 
+import { LogoMark } from "./components/LogoMark";
+
 const CONTACT_PHONE_DISPLAY = "+91 98765 43210";
 const CONTACT_PHONE_HREF = "tel:+919876543210";
 const CONTACT_EMAIL = "hello@woodandspace.com";
@@ -37,28 +39,6 @@ const HERO_BANNER_IMAGES = [
   "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=2000&q=90",
   "https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=2000&q=90",
 ];
-
-/* =========================================================
-   LOGO
-========================================================= */
-
-function LogoMark({ footer = false }: { footer?: boolean }) {
-  const [imageError, setImageError] = useState(false);
-
-  return (
-    <span className={footer ? "footer-logo-image" : "logo-image-wrap"}>
-      {!imageError ? (
-        <img
-          src="/wood-space-mark-transparent.png"
-          alt="Wood & Space logo"
-          onError={() => setImageError(true)}
-        />
-      ) : (
-        <span className="logo-fallback">WS</span>
-      )}
-    </span>
-  );
-}
 
 /* =========================================================
    SERVICES
@@ -426,7 +406,7 @@ export default function Home() {
 
         <nav>
           <a href="#home">Home</a>
-          <a href="#about">About</a>
+          <a href="/about">About</a>
           <a href="#services">Services</a>
           <a href="#projects">Projects</a>
           <a href="#contact">Contact</a>
@@ -715,7 +695,7 @@ export default function Home() {
 
         <div className="about-content reveal">
 
-          <p className="eyebrow dark">
+          <p className="eyebrow dark about-us-eyebrow">
             ABOUT US
           </p>
 
@@ -1251,7 +1231,7 @@ export default function Home() {
               Home
             </a>
 
-            <a href="#about">
+            <a href="/about">
               <FaArrowRight />
               About
             </a>

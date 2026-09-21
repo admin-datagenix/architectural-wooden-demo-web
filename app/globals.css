@@ -213,14 +213,14 @@ a {
 
 /* HERO — preserved */
 .hero {
-   min-height: 680px;
+   min-height: 600px;
    position: relative;
    overflow: hidden;
    background: #080d0c;
    color: #fff;
    display: flex;
    align-items: center;
-   padding: 90px 7%
+   padding: 48px 7% 58px
 }
 
 .hero-slides {
@@ -316,9 +316,9 @@ a {
 
 .hero h1 {
    font-family: "Playfair Display", serif;
-   font-size: clamp(48px, 6vw, 82px);
+   font-size: clamp(42px, 5.2vw, 72px);
    line-height: 1.02;
-   margin-bottom: 25px;
+   margin-bottom: 16px;
    animation: titleReveal 1.2s .55s cubic-bezier(.2, .8, .2, 1) both
 }
 
@@ -366,7 +366,7 @@ a {
 .hero-buttons {
    display: flex;
    gap: 15px;
-   margin-top: 32px;
+   margin-top: 22px;
    animation: buttonsReveal 1s 1s both
 }
 
@@ -406,7 +406,7 @@ a {
 .hero-bottom {
    position: absolute;
    z-index: 3;
-   bottom: 35px;
+   bottom: 14px;
    left: 7%;
    display: flex;
    gap: 55px;
@@ -466,7 +466,7 @@ a {
 
 /* GENERAL */
 .section {
-   padding: 110px 7%
+   padding: 72px 7%
 }
 
 .section-heading {
@@ -474,7 +474,7 @@ a {
    justify-content: space-between;
    align-items: end;
    gap: 60px;
-   margin-bottom: 45px
+   margin-bottom: 32px
 }
 
 .section-heading h2,
@@ -534,9 +534,95 @@ a {
    color: #a96c36
 }
 
+.eyebrow.about-us-eyebrow {
+   font-size: clamp(15px, 1.8vw, 20px);
+   letter-spacing: 6px;
+   margin-bottom: 16px
+}
+
+a.logo {
+   text-decoration: none;
+   color: inherit
+}
+
+/* ABOUT PAGE */
+.about-page {
+   background: #fff
+}
+
+.about-page-main {
+   padding-top: 48px
+}
+
+.about-mission-vision {
+   padding: 0 7% 64px;
+   background: #fff
+}
+
+.mission-vision-grid {
+   display: grid;
+   grid-template-columns: repeat(2, 1fr);
+   gap: 28px;
+   max-width: 1200px;
+   margin: 0 auto
+}
+
+.mission-vision-card {
+   background: #f7f3ed;
+   border: 1px solid #ece3d6;
+   border-radius: 12px;
+   padding: 36px 32px;
+   transition: transform .45s ease, box-shadow .45s ease
+}
+
+.mission-vision-card:hover {
+   transform: translateY(-6px);
+   box-shadow: 0 16px 40px rgba(0, 0, 0, .08)
+}
+
+.mission-vision-card h3 {
+   font-family: "Playfair Display", serif;
+   font-size: clamp(26px, 3vw, 34px);
+   line-height: 1.15;
+   margin-bottom: 16px;
+   color: #171816
+}
+
+.mission-vision-card p {
+   color: #68635d;
+   line-height: 1.8;
+   font-size: 15px
+}
+
+.mission-vision-card .about-us-eyebrow {
+   margin-bottom: 12px
+}
+
+.about-page-footer {
+   padding: 36px 7% 52px;
+   background: #fff;
+   border-top: 1px solid #ece6de
+}
+
+.about-page-footer a {
+   display: inline-flex;
+   align-items: center;
+   gap: 10px;
+   color: #a96c36;
+   font-weight: 600;
+   text-decoration: none;
+   transition: .35s
+}
+
+.about-page-footer a:hover {
+   color: #e9aa67;
+   transform: translateX(6px)
+}
+
 /* SERVICES */
 .services-section {
-   background: #f7f3ed
+   background: #f7f3ed;
+   padding-bottom: 40px
 }
 
 .services-grid {
@@ -683,7 +769,7 @@ a {
 
 /* ABOUT */
 .about-section {
-   padding: 100px 7%;
+   padding: 56px 7%;
    background: #fff;
    display: grid;
    grid-template-columns: 1.1fr .9fr;
@@ -811,10 +897,6 @@ a {
    font-size: 11px;
    color: #777;
    margin-top: 3px
-}
-
-.about-content h2 span {
-   color: rgba(233, 170, 103, .42)
 }
 
 .about-content .outline-button {
@@ -1498,9 +1580,8 @@ footer {
    }
 
    .hero {
-      min-height: 650px;
-      padding: 70px 5%;
-      animation-duration: 18s
+      min-height: 420px;
+      padding: 42px 5% 52px
    }
 
    .hero h1 {
@@ -1521,6 +1602,14 @@ footer {
    .why-section,
    .contact-section {
       grid-template-columns: 1fr
+   }
+
+   .mission-vision-grid {
+      grid-template-columns: 1fr
+   }
+
+   .about-mission-vision {
+      padding: 0 5% 56px
    }
 
    .projects-grid {
@@ -1592,7 +1681,7 @@ footer {
    }
 
    .section {
-      padding: 80px 5%
+      padding: 56px 5%
    }
 
    .process-section,
@@ -1976,8 +2065,8 @@ footer {
 .service-marquee{
   width:100%;
   overflow:hidden;
-  margin-top:55px;
-  padding:18px 0;
+  margin-top:28px;
+  padding:14px 0;
   background:#171a18;
   border-top:1px solid rgba(232,166,99,.25);
   border-bottom:1px solid rgba(232,166,99,.25);
