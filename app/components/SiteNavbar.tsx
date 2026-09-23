@@ -58,7 +58,7 @@ export function SiteNavbar({ onGetQuote }: SiteNavbarProps) {
         <Link href="/#projects" onClick={closeMenu}>
           Projects
         </Link>
-        <Link href="/#contact" onClick={closeMenu}>
+        <Link href="/contact" onClick={closeMenu}>
           Contact
         </Link>
 
@@ -68,11 +68,7 @@ export function SiteNavbar({ onGetQuote }: SiteNavbarProps) {
             <FaArrowRight />
           </button>
         ) : (
-          <Link
-            href="/#contact"
-            className="nav-menu-quote"
-            onClick={closeMenu}
-          >
+          <Link href="/contact" className="nav-menu-quote" onClick={closeMenu}>
             Get a Quote
             <FaArrowRight />
           </Link>
@@ -85,7 +81,7 @@ export function SiteNavbar({ onGetQuote }: SiteNavbarProps) {
           <FaArrowRight />
         </button>
       ) : (
-        <Link href="/#contact" className="nav-button" onClick={closeMenu}>
+        <Link href="/contact" className="nav-button" onClick={closeMenu}>
           Get a Quote
           <FaArrowRight />
         </Link>
