@@ -57,7 +57,7 @@ export default function AboutPage() {
           <div className="image-frame-line" />
 
           <img
-            src="/about-us-house.png"
+            src="/about-us-house.jpg"
             alt="Architectural house transformation"
             loading="eager"
           />

@@ -767,8 +767,8 @@ export default function Home() {
           <div className="image-frame-line" />
 
           <img
-            src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1400&q=88"
-            alt="Modern wooden interior"
+            src="/about-us-house.jpg"
+            alt="Architectural house transformation"
             loading="lazy"
           />
 
