@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "About Us | Wood & Space",
+  title: "About Us | Sawant & Associates",
   description:
-    "Learn about Wood & Space — architecture, interiors, and premium wooden design in Pune.",
+    "Learn about Sawant & Associates — architecture, interiors, and landscape design in Pune.",
 };
 
 export default function AboutLayout({

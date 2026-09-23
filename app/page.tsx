@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useEffect, useState } from "react";
 
 import {
@@ -25,6 +26,7 @@ import { GiWoodenChair } from "react-icons/gi";
 import { MdArchitecture, MdDesignServices } from "react-icons/md";
 
 import { LogoMark } from "./components/LogoMark";
+import { SiteNavbar } from "./components/SiteNavbar";
 
 const CONTACT_PHONE_DISPLAY = "+91 98765 43210";
 const CONTACT_PHONE_HREF = "tel:+919876543210";
@@ -60,8 +62,8 @@ const services = [
     Icon: FaCouch,
   },
   {
-    title: "Wooden Design",
-    text: "Premium custom woodwork crafted with precision and detail.",
+    title: "Landscape Design",
+    text: "Outdoor spaces, gardens and hardscapes planned with balance and detail.",
     image:
       "https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?auto=format&fit=crop&w=1200&q=88",
     Icon: FaTree,
@@ -83,72 +85,150 @@ const projects = [
   {
     title: "Modern Villa",
     category: "Architecture",
+    text: "Contemporary villa planning with elevation, space planning and premium finishes.",
     image:
       "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1200&q=85",
+    Icon: MdArchitecture,
   },
   {
     title: "Luxury Wooden Interior",
     category: "Interior + Woodwork",
+    text: "Warm luxury interiors with custom woodwork, layered lighting and elegant materials.",
     image:
       "https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=1200&q=85",
+    Icon: FaCouch,
   },
   {
     title: "Premium Kitchen",
-    category: "Wooden Design",
+    category: "Landscape Design",
+    text: "Functional outdoor and landscape-led spaces with smart planning and premium detail.",
     image:
       "https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fit=crop&w=1200&q=85",
+    Icon: FaTree,
   },
 ];
 
 const projectDetails = {
   "Modern Villa": {
-    title: "Modern Villa",
     category: "Architecture",
     location: "Pune, Maharashtra",
     year: "2026",
-    description:
-      "A contemporary residential villa designed around clean architectural lines, natural light and comfortable modern living.",
-    image:
-      "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1600&q=90",
-    features: [
-      "Modern architectural planning",
-      "Contemporary elevation",
-      "Natural lighting strategy",
-      "Premium exterior finishes",
+    slides: [
+      {
+        name: "Exterior & Facade",
+        info: "Contemporary villa elevation with clean lines, natural stone accents and layered outdoor lighting.",
+        image:
+          "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1600&q=90",
+        highlights: [
+          "Double-height entrance porch",
+          "Large glazing for daylight",
+          "Landscape-linked terraces",
+        ],
+      },
+      {
+        name: "Living & Dining",
+        info: "Open planning connects living, dining and garden views with warm neutral finishes.",
+        image:
+          "https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=1600&q=90",
+        highlights: [
+          "Open-plan social zone",
+          "Custom ceiling details",
+          "Indoor–outdoor flow",
+        ],
+      },
+      {
+        name: "Master Suite",
+        info: "Private suite with wardrobe planning, ensuite layout and soft layered lighting.",
+        image:
+          "https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?auto=format&fit=crop&w=1600&q=90",
+        highlights: [
+          "Walk-in wardrobe design",
+          "Calm material palette",
+          "Acoustic comfort planning",
+        ],
+      },
     ],
   },
 
   "Luxury Wooden Interior": {
-    title: "Luxury Wooden Interior",
     category: "Interior + Woodwork",
     location: "Pune, Maharashtra",
     year: "2026",
-    description:
-      "A warm luxury interior combining contemporary furniture, natural wood textures and carefully planned lighting.",
-    image:
-      "https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=1600&q=90",
-    features: [
-      "Premium wooden detailing",
-      "Custom furniture planning",
-      "Layered lighting",
-      "Elegant material palette",
+    slides: [
+      {
+        name: "Living Lounge",
+        info: "Warm luxury interior with custom wood paneling, curated furniture and accent lighting.",
+        image:
+          "https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=1600&q=90",
+        highlights: [
+          "Feature wood wall",
+          "Bespoke coffee table",
+          "Layered ambient lighting",
+        ],
+      },
+      {
+        name: "Dining & Bar",
+        info: "Entertaining zone with veneer cabinetry, fluted details and integrated storage.",
+        image:
+          "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1600&q=90",
+        highlights: [
+          "Custom bar unit",
+          "Hidden service storage",
+          "Statement pendant lights",
+        ],
+      },
+      {
+        name: "Study Nook",
+        info: "Compact work area with shelving, pinboard planning and ergonomic desk layout.",
+        image:
+          "https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=1600&q=90",
+        highlights: [
+          "Floor-to-ceiling shelves",
+          "Integrated desk lighting",
+          "Cable-managed workspace",
+        ],
+      },
     ],
   },
 
   "Premium Kitchen": {
-    title: "Premium Kitchen",
-    category: "Wooden Design",
+    category: "Landscape Design",
     location: "Pune, Maharashtra",
     year: "2026",
-    description:
-      "A functional premium kitchen designed with smart storage, modern finishes and custom wooden detailing.",
-    image:
-      "https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fit=crop&w=1600&q=90",
-    features: [
-      "Custom modular planning",
-      "Smart storage solutions",
-      "Premium finishes",
-      "Functional work triangle",
+    slides: [
+      {
+        name: "Kitchen Overview",
+        info: "Functional premium kitchen with smart storage, quartz counters and soft-close hardware.",
+        image:
+          "https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fit=crop&w=1600&q=90",
+        highlights: [
+          "Efficient work triangle",
+          "Tall unit pantry",
+          "Under-cabinet lighting",
+        ],
+      },
+      {
+        name: "Island & Breakfast",
+        info: "Central island with seating, appliance garage and concealed power points.",
+        image:
+          "https://images.unsplash.com/photo-1600566753051-f0b89df2dd90?auto=format&fit=crop&w=1600&q=90",
+        highlights: [
+          "Quartz waterfall edge",
+          "Bar seating for four",
+          "Integrated hob and chimney",
+        ],
+      },
+      {
+        name: "Storage Details",
+        info: "Internal organizers, spice pull-outs and corner carousel for everyday ease.",
+        image:
+          "https://images.unsplash.com/photo-1558997519-83ea9252edf8?auto=format&fit=crop&w=1600&q=90",
+        highlights: [
+          "Soft-close drawers",
+          "Segmented cutlery trays",
+          "Moisture-resistant boards",
+        ],
+      },
     ],
   },
 };
@@ -209,7 +289,7 @@ const serviceDetails = {
     },
   ],
 
-  "Wooden Design": [
+  "Landscape Design": [
     {
       name: "Custom Wardrobe",
       info: "Made-to-measure wardrobes with practical storage and refined wooden finishes.",
@@ -226,7 +306,7 @@ const serviceDetails = {
     },
     {
       name: "Wooden TV Unit",
-      info: "Custom TV units with clean geometry, concealed storage and warm wood textures.",
+      info: "A contemporary TV unit combining clean geometry, concealed storage, warm wood textures and practical functionality for everyday living.",
       price: "From ₹55,000",
       image:
         "https://images.unsplash.com/photo-1618220179428-22790b461013?auto=format&fit=crop&w=1400&q=90",
@@ -255,6 +335,37 @@ const serviceDetails = {
       image:
         "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1400&q=90",
     },
+  ],
+};
+
+const serviceMoreBullets: Record<ServiceName, string[]> = {
+  Architecture: [
+    "Site study, measurements and feasibility review",
+    "Concept plans, elevations and 3D previews",
+    "Structural and MEP coordination with consultants",
+    "Material selection, BOQ support and site visits",
+    "Handover documentation and as-built updates",
+  ],
+  "Interior Design": [
+    "Mood boards, layouts and furniture planning",
+    "Lighting layers, false ceiling and electrical points",
+    "Custom joinery, veneers and hardware specification",
+    "Vendor coordination and sample approvals",
+    "Styling, installation support and final walkthrough",
+  ],
+  "Landscape Design": [
+    "Site survey and landscape concept planning",
+    "Planting, lawn and hardscape layout",
+    "Irrigation and outdoor lighting design",
+    "On-site execution and quality checks",
+    "Seasonal care and maintenance guidance",
+  ],
+  Renovation: [
+    "Existing condition audit and demolition planning",
+    "Phased execution to reduce downtime at home",
+    "Waterproofing, electrical and civil upgrades",
+    "New finishes, woodwork and storage solutions",
+    "Final cleaning, snag list and warranty support",
   ],
 };
 
@@ -303,6 +414,7 @@ export default function Home() {
     useState<ProjectName | null>(null);
 
   const [activeSlide, setActiveSlide] = useState(0);
+  const [activeProjectSlide, setActiveProjectSlide] = useState(0);
   const [heroBannerIndex, setHeroBannerIndex] = useState(0);
 
   /* =======================================================
@@ -362,6 +474,11 @@ export default function Home() {
     return () => window.clearInterval(timer);
   }, [selectedService]);
 
+  useEffect(() => {
+    if (!selectedProject) return;
+    setActiveProjectSlide(0);
+  }, [selectedProject]);
+
   /* =======================================================
      KEYBOARD ESC
   ======================================================= */
@@ -388,39 +505,7 @@ export default function Home() {
           NAVBAR
       ===================================================== */}
 
-      <header className="navbar">
-
-        <div className="logo">
-
-          <LogoMark />
-
-          <div>
-            <strong>WOOD &amp; SPACE</strong>
-
-            <small>
-              ARCHITECTURE | INTERIORS | WOODEN DESIGN
-            </small>
-          </div>
-
-        </div>
-
-        <nav>
-          <a href="#home">Home</a>
-          <a href="/about">About</a>
-          <a href="#services">Services</a>
-          <a href="#projects">Projects</a>
-          <a href="#contact">Contact</a>
-        </nav>
-
-        <button
-          className="nav-button"
-          onClick={() => setShowForm(true)}
-        >
-          Get a Quote
-          <FaArrowRight />
-        </button>
-
-      </header>
+      <SiteNavbar onGetQuote={() => setShowForm(true)} />
 
 
       {/* =====================================================
@@ -641,7 +726,7 @@ export default function Home() {
             <span>INTERIOR DESIGN</span>
             <i>✦</i>
 
-            <span>WOODEN DESIGN</span>
+            <span>LANDSCAPE DESIGN</span>
             <i>✦</i>
 
             <span>RENOVATION</span>
@@ -653,7 +738,7 @@ export default function Home() {
             <span>INTERIOR DESIGN</span>
             <i>✦</i>
 
-            <span>WOODEN DESIGN</span>
+            <span>LANDSCAPE DESIGN</span>
             <i>✦</i>
 
             <span>RENOVATION</span>
@@ -738,13 +823,10 @@ export default function Home() {
           </div>
 
 
-          <button
-            className="outline-button"
-            onClick={() => setShowForm(true)}
-          >
-            Start Your Project
+          <Link href="/about" className="outline-button">
+            Know More
             <FaArrowRight />
-          </button>
+          </Link>
 
         </div>
 
@@ -760,21 +842,16 @@ export default function Home() {
         className="section projects-section"
       >
 
-        <div className="section-heading reveal">
+        <div className="section-heading section-heading-center projects-heading reveal">
 
-          <div>
+          <p className="eyebrow dark">
+            SELECTED WORK
+          </p>
 
-            <p className="eyebrow dark">
-              SELECTED WORK
-            </p>
+          <h2>Our Projects</h2>
 
-            <h2>Our Projects</h2>
-
-          </div>
-
-          <p>
-            A glimpse of spaces designed with architecture,
-            interiors and handcrafted wooden details.
+          <p className="projects-subhead">
+            A glimpse of spaces designed with architecture, interiors and handcrafted wooden details.
           </p>
 
         </div>
@@ -782,63 +859,65 @@ export default function Home() {
 
         <div className="projects-grid">
 
-          {projects.map((project, index) => (
+          {projects.map((project, index) => {
+            const Icon = project.Icon;
 
-            <article
-              className="project-card reveal"
-              key={project.title}
-              style={{
-                transitionDelay: `${index * 0.14}s`,
-              }}
-              onClick={() =>
-                setSelectedProject(
-                  project.title as ProjectName
-                )
-              }
-              role="button"
-              tabIndex={0}
-              onKeyDown={(event) => {
-
-                if (
-                  event.key === "Enter" ||
-                  event.key === " "
-                ) {
-                  setSelectedProject(
-                    project.title as ProjectName
-                  );
+            return (
+              <article
+                className="service-card project-card reveal"
+                key={project.title}
+                style={{
+                  transitionDelay: `${index * 0.14}s`,
+                }}
+                onClick={() =>
+                  setSelectedProject(project.title as ProjectName)
                 }
+                role="button"
+                tabIndex={0}
+                onKeyDown={(event) => {
+                  if (event.key === "Enter" || event.key === " ") {
+                    setSelectedProject(project.title as ProjectName);
+                  }
+                }}
+              >
+                <div className="service-image project-card-image">
+                  <img
+                    src={project.image}
+                    alt={project.title}
+                    loading="lazy"
+                  />
 
-              }}
-            >
+                  <div className="service-image-shine" />
 
-              <img
-                src={project.image}
-                alt={project.title}
-                loading="lazy"
-              />
+                  <div className="service-floating-icon">
+                    <Icon />
+                  </div>
 
-              <div className="project-number">
-                0{index + 1}
-              </div>
+                  <span className="project-card-number">
+                    0{index + 1}
+                  </span>
+                </div>
 
-              <div className="project-overlay">
+                <div className="service-info">
+                  <div className="service-icon">
+                    <Icon />
+                  </div>
 
-                <small>
-                  {project.category}
-                </small>
+                  <div>
+                    <small className="project-card-category">
+                      {project.category}
+                    </small>
+                    <h3>{project.title}</h3>
+                    <p>{project.text}</p>
+                  </div>
 
-                <h3>{project.title}</h3>
-
-                <span>
-                  View Project
-                  <FaArrowRight />
-                </span>
-
-              </div>
-
-            </article>
-
-          ))}
+                  <span className="arrow">
+                    <FaArrowRight />
+                  </span>
+                </div>
+              </article>
+            );
+          })}
 
         </div>
 
@@ -1135,7 +1214,7 @@ export default function Home() {
               </option>
 
               <option>
-                Wooden Design
+                Landscape Design
               </option>
 
               <option>
@@ -1196,12 +1275,12 @@ export default function Home() {
 
               <div>
 
-                <strong>
-                  WOOD &amp; SPACE
+                <strong className="logo-brand-name">
+                  Sawant <span className="logo-amp">&amp;</span> Associates
                 </strong>
 
                 <small>
-                  ARCHITECTURE | INTERIORS | WOODEN DESIGN
+                  ARCHITECTURE | INTERIORS | LANDSCAPE DESIGN
                 </small>
 
               </div>
@@ -1274,7 +1353,7 @@ export default function Home() {
 
             <a href="#services">
               <FaArrowRight />
-              Wooden Design
+              Landscape Design
             </a>
 
             <a href="#services">
@@ -1332,13 +1411,9 @@ export default function Home() {
 
         <div className="footer-bottom">
 
-          <span>
-            © 2026 Wood &amp; Space. All rights reserved.
-          </span>
-
-          <span>
-            Architecture · Interiors · Wooden Design
-          </span>
+          <p className="footer-bottom-line">
+            © 2026 Sawant &amp; Associates. All rights reserved DatagenixAi · Architecture · Interiors · Landscape Design
+          </p>
 
         </div>
 
@@ -1364,217 +1439,194 @@ export default function Home() {
           PROJECT DETAIL POPUP
       ===================================================== */}
 
-      {selectedProject &&
-        projectDetails[selectedProject] && (
+      {selectedProject && projectDetails[selectedProject] && (
 
           <div
             className="project-modal"
-            onClick={() =>
-              setSelectedProject(null)
-            }
+            onClick={() => setSelectedProject(null)}
           >
 
             <div
               className="project-modal-box"
-              onClick={(event) =>
-                event.stopPropagation()
-              }
+              onClick={(event) => event.stopPropagation()}
             >
 
               <button
-                className="project-modal-close"
-                onClick={() =>
-                  setSelectedProject(null)
-                }
+                className="service-modal-close project-modal-close-btn"
+                onClick={() => setSelectedProject(null)}
                 aria-label="Close project"
               >
-                <FaXmark />
+                ×
               </button>
 
+              <div className="service-modal-head project-modal-head">
 
-              {/* PROJECT IMAGE */}
-
-              <div className="project-modal-image">
-
-                <img
-                  src={
-                    projectDetails[
-                      selectedProject
-                    ].image
-                  }
-                  alt={
-                    projectDetails[
-                      selectedProject
-                    ].title
-                  }
-                />
-
-                <div className="project-modal-image-overlay" />
-
-
-                <div className="project-modal-title">
-
-                  <p>
-                    {
-                      projectDetails[
-                        selectedProject
-                      ].category
-                    }
-                  </p>
-
-                  <h2>
-                    {
-                      projectDetails[
-                        selectedProject
-                      ].title
-                    }
-                  </h2>
-
+                <div>
+                  <p className="eyebrow dark">SELECTED PROJECT</p>
+                  <h2>{selectedProject}</h2>
                 </div>
+
+                <span className="service-count">
+                  {String(activeProjectSlide + 1).padStart(2, "0")}
+                  {" / "}
+                  {String(
+                    projectDetails[selectedProject].slides.length
+                  ).padStart(2, "0")}
+                </span>
 
               </div>
 
+              <div className="project-modal-scroll">
 
-              {/* PROJECT CONTENT */}
+                <div className="service-slider project-detail-slider">
 
-              <div className="project-modal-content">
-
-
-                {/* META */}
-
-                <div className="project-meta">
-
-                  <div>
-
-                    <FaLocationDot />
-
-                    <span>
-
-                      <small>
-                        Location
-                      </small>
-
-                      {
-                        projectDetails[
-                          selectedProject
-                        ].location
-                      }
-
-                    </span>
-
-                  </div>
-
-
-                  <div>
-
-                    <FaCalendarDays />
-
-                    <span>
-
-                      <small>
-                        Project Year
-                      </small>
-
-                      {
-                        projectDetails[
-                          selectedProject
-                        ].year
-                      }
-
-                    </span>
-
-                  </div>
-
-                </div>
-
-
-                {/* DESCRIPTION */}
-
-                <div className="project-description">
-
-                  <p className="eyebrow dark">
-                    PROJECT DETAILS
-                  </p>
-
-                  <h3>
-                    Designed around
-                    <br />
-                    <span>
-                      your lifestyle.
-                    </span>
-                  </h3>
-
-                  <p>
-                    {
-                      projectDetails[
-                        selectedProject
-                      ].description
-                    }
-                  </p>
-
-                </div>
-
-
-                {/* FEATURES */}
-
-                <div className="project-features">
-
-                  <h4>
-                    Project Highlights
-                  </h4>
-
-
-                  {
-                    projectDetails[
-                      selectedProject
-                    ].features.map(
-                      (feature) => (
-
-                        <div
-                          className="project-feature"
-                          key={feature}
-                        >
-
-                          <span>
-                            <FaCheck />
-                          </span>
-
-                          <p>
-                            {feature}
-                          </p>
-
+                  {projectDetails[selectedProject].slides.map(
+                    (item, index) => (
+                      <div
+                        className={`service-slide ${
+                          index === activeProjectSlide ? "active" : ""
+                        }`}
+                        key={item.name}
+                      >
+                        <div className="service-slide-media">
+                          <img src={item.image} alt={item.name} />
                         </div>
 
-                      )
+                        <div className="service-slide-body project-slide-body">
+                          <p className="slide-category">
+                            {projectDetails[selectedProject].category}
+                          </p>
+
+                          <h3 className="letter-title project-letter-title">
+                            {item.name}
+                          </h3>
+
+                          <p className="service-slide-info">{item.info}</p>
+
+                          <div className="project-meta project-meta-inline">
+                            <div>
+                              <FaLocationDot />
+                              <span>
+                                <small>Location</small>
+                                {projectDetails[selectedProject].location}
+                              </span>
+                            </div>
+                            <div>
+                              <FaCalendarDays />
+                              <span>
+                                <small>Project Year</small>
+                                {projectDetails[selectedProject].year}
+                              </span>
+                            </div>
+                          </div>
+
+                          <div className="project-slide-highlights">
+                            <h4>Project Highlights</h4>
+                            <ul>
+                              {item.highlights.map((line) => (
+                                <li key={line}>
+                                  <FaCheck />
+                                  {line}
+                                </li>
+                              ))}
+                            </ul>
+                          </div>
+
+                          <div className="slide-bottom">
+                            <strong>Turnkey design &amp; build</strong>
+                            <button
+                              className="primary-button"
+                              onClick={() => {
+                                setSelectedProject(null);
+                                setShowForm(true);
+                              }}
+                            >
+                              Start a Similar Project
+                              <FaArrowRight />
+                            </button>
+                          </div>
+                        </div>
+                      </div>
                     )
-                  }
-
-                </div>
-
-
-                {/* ACTION */}
-
-                <div className="project-modal-action">
+                  )}
 
                   <button
-                    className="primary-button"
-                    onClick={() => {
-
-                      setSelectedProject(null);
-
-                      setShowForm(true);
-
-                    }}
+                    className="slider-arrow slider-prev"
+                    onClick={() =>
+                      setActiveProjectSlide(
+                        (activeProjectSlide -
+                          1 +
+                          projectDetails[selectedProject].slides.length) %
+                          projectDetails[selectedProject].slides.length
+                      )
+                    }
+                    aria-label="Previous project view"
                   >
+                    ‹
+                  </button>
 
-                    Start a Similar Project
-
-                    <FaArrowRight />
-
+                  <button
+                    className="slider-arrow slider-next"
+                    onClick={() =>
+                      setActiveProjectSlide(
+                        (activeProjectSlide + 1) %
+                          projectDetails[selectedProject].slides.length
+                      )
+                    }
+                    aria-label="Next project view"
+                  >
+                    ›
                   </button>
 
                 </div>
 
+                <div className="project-gallery-strip">
+                  <h4>Gallery views</h4>
+                  <div className="project-gallery-grid">
+                    {projectDetails[selectedProject].slides.map(
+                      (item, index) => (
+                        <button
+                          type="button"
+                          key={`${item.name}-thumb`}
+                          className={
+                            index === activeProjectSlide
+                              ? "active"
+                              : undefined
+                          }
+                          onClick={() => setActiveProjectSlide(index)}
+                        >
+                          <img src={item.image} alt={item.name} />
+                          <span>{item.name}</span>
+                        </button>
+                      )
+                    )}
+                  </div>
+                </div>
+
+              </div>
+
+              <div className="service-dots">
+                {projectDetails[selectedProject].slides.map((item, index) => (
+                  <button
+                    key={`${item.name}-dot`}
+                    className={index === activeProjectSlide ? "active" : ""}
+                    onClick={() => setActiveProjectSlide(index)}
+                    aria-label={`Show ${item.name}`}
+                  />
+                ))}
+              </div>
+
+              <div className="service-option-row project-option-row">
+                {projectDetails[selectedProject].slides.map((item, index) => (
+                  <button
+                    key={`${item.name}-opt`}
+                    className={index === activeProjectSlide ? "active" : ""}
+                    onClick={() => setActiveProjectSlide(index)}
+                  >
+                    <span>{String(index + 1).padStart(2, "0")}</span>
+                    {item.name}
+                  </button>
+                ))}
               </div>
 
             </div>
@@ -1649,153 +1701,97 @@ export default function Home() {
             </div>
 
 
-            <div className="service-slider">
+            {(() => {
+              const slides = serviceDetails[selectedService];
+              const item = slides[activeSlide];
+              const total = slides.length;
+              const goPrev = () =>
+                setActiveSlide((activeSlide - 1 + total) % total);
+              const goNext = () =>
+                setActiveSlide((activeSlide + 1) % total);
 
-              {
-                serviceDetails[
-                  selectedService
-                ].map(
-                  (item, index) => (
+              return (
+                <div className="service-modal-scroll">
 
-                    <div
-                      className={`service-slide ${
-                        index === activeSlide
-                          ? "active"
-                          : ""
-                      }`}
-                      key={item.name}
+                  <div className="service-hero-image">
+                    <img
+                      key={item.image}
+                      src={item.image}
+                      alt={item.name}
+                    />
+
+                    <button
+                      type="button"
+                      className="slider-arrow slider-prev"
+                      onClick={goPrev}
+                      aria-label="Previous"
                     >
+                      ‹
+                    </button>
 
-                      <img
-                        src={item.image}
-                        alt={item.name}
-                      />
+                    <button
+                      type="button"
+                      className="slider-arrow slider-next"
+                      onClick={goNext}
+                      aria-label="Next"
+                    >
+                      ›
+                    </button>
+                  </div>
 
-                      <div className="service-slide-overlay" />
+                  <article className="service-detail-copy">
 
+                    <p className="slide-category">{selectedService}</p>
 
-                      <div className="service-slide-content">
+                    <h3 className="service-slide-title">{item.name}</h3>
 
-                        <p className="slide-category">
-                          {selectedService}
-                        </p>
+                    <p className="service-slide-info">{item.info}</p>
 
-
-                        <h3 className="letter-title">
-
-                          {item.name
-                            .split("")
-                            .map(
-                              (
-                                letter,
-                                i
-                              ) => (
-
-                                <span
-                                  key={`${letter}-${i}`}
-                                  style={{
-                                    animationDelay: `${
-                                      i * 0.055
-                                    }s`,
-                                  }}
-                                >
-                                  {letter === " "
-                                    ? "\u00a0"
-                                    : letter}
-                                </span>
-
-                              )
-                            )}
-
-                        </h3>
-
-
-                        <p>
-                          {item.info}
-                        </p>
-
-
-                        <div className="slide-bottom">
-
-                          <strong>
-                            {item.price}
-                          </strong>
-
-
-                          <button
-                            className="primary-button"
-                            onClick={() => {
-
-                              setSelectedService(
-                                null
-                              );
-
-                              setShowForm(true);
-
-                            }}
-                          >
-
-                            Get a Quote
-
-                            <FaArrowRight />
-
-                          </button>
-
-                        </div>
-
-                      </div>
-
+                    <div className="service-slide-highlights">
+                      <h4>Key features</h4>
+                      <ul>
+                        {serviceMoreBullets[selectedService]
+                          .slice(0, 4)
+                          .map((line) => (
+                            <li key={line}>
+                              <FaCheck />
+                              {line}
+                            </li>
+                          ))}
+                      </ul>
                     </div>
 
-                  )
-                )
-              }
+                    <div className="service-slide-extra">
+                      <h4>What&apos;s included</h4>
+                      <ul>
+                        {serviceMoreBullets[selectedService].map((line) => (
+                          <li key={line}>{line}</li>
+                        ))}
+                        <li>Package tailored for {item.name}</li>
+                      </ul>
+                    </div>
 
+                    <div className="slide-bottom">
+                      <strong>{item.price}</strong>
 
-              {/* PREVIOUS */}
+                      <button
+                        type="button"
+                        className="primary-button"
+                        onClick={() => {
+                          setSelectedService(null);
+                          setShowForm(true);
+                        }}
+                      >
+                        Get a Quote
+                        <FaArrowRight />
+                      </button>
+                    </div>
 
-              <button
-                className="slider-arrow slider-prev"
-                onClick={() =>
-                  setActiveSlide(
-                    (
-                      activeSlide -
-                      1 +
-                      serviceDetails[
-                        selectedService
-                      ].length
-                    ) %
-                    serviceDetails[
-                      selectedService
-                    ].length
-                  )
-                }
-                aria-label="Previous"
-              >
-                ‹
-              </button>
+                  </article>
 
-
-              {/* NEXT */}
-
-              <button
-                className="slider-arrow slider-next"
-                onClick={() =>
-                  setActiveSlide(
-                    (
-                      activeSlide + 1
-                    ) %
-                    serviceDetails[
-                      selectedService
-                    ].length
-                  )
-                }
-                aria-label="Next"
-              >
-                ›
-              </button>
-
-            </div>
+                </div>
+              );
+            })()}
 
 
             {/* DOTS */}
@@ -1991,7 +1987,7 @@ export default function Home() {
                   </option>
 
                   <option>
-                    Wooden Design
+                    Landscape Design
                   </option>
 
                   <option>

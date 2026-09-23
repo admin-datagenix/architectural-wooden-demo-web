@@ -5,7 +5,7 @@ import Link from "next/link";
 
 import { FaArrowRight } from "react-icons/fa6";
 
-import { LogoMark } from "../components/LogoMark";
+import { SiteNavbar } from "../components/SiteNavbar";
 
 export default function AboutPage() {
   useEffect(() => {
@@ -29,29 +29,7 @@ export default function AboutPage() {
 
   return (
     <main className="site about-page">
-      <header className="navbar">
-        <Link href="/" className="logo">
-          <LogoMark />
-
-          <div>
-            <strong>WOOD &amp; SPACE</strong>
-            <small>ARCHITECTURE | INTERIORS | WOODEN DESIGN</small>
-          </div>
-        </Link>
-
-        <nav>
-          <Link href="/">Home</Link>
-          <Link href="/about">About</Link>
-          <Link href="/#services">Services</Link>
-          <Link href="/#projects">Projects</Link>
-          <Link href="/#contact">Contact</Link>
-        </nav>
-
-        <Link href="/#contact" className="nav-button">
-          Get a Quote
-          <FaArrowRight />
-        </Link>
-      </header>
+      <SiteNavbar />
 
       <section className="about-section about-page-main">
         <div className="about-image reveal">
