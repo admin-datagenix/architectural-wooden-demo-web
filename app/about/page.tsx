@@ -412,22 +412,24 @@ export default function AboutPage() {
               {CONTACT_ADDRESS}
             </a>
 
-            <a
-              className="footer-whatsapp"
-              href="https://wa.me/919876543210"
-              target="_blank"
-              rel="noreferrer"
-            >
-              <FaWhatsapp />
-              Chat on WhatsApp
-            </a>
           </div>
         </div>
 
         <div className="footer-bottom">
-          <span>© 2026 Sawant &amp; Associates. All rights reserved.</span>
-
-          <span>Architecture · Interiors · Landscape Design</span>
+          <p className="footer-bottom-left">
+            © 2026 Sawant &amp; Associates. All rights reserved.
+          </p>
+          <p className="footer-bottom-right">
+            <span>Designed &amp; Developed by </span>
+            <a
+              href="https://www.datagenix.in/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="datagenix-link"
+            >
+              DatagenixAI
+            </a>
+          </p>
         </div>
       </footer>
     </main>

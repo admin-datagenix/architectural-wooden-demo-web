@@ -9,8 +9,8 @@ export function LogoMark({ footer = false }: { footer?: boolean }) {
     <span className={footer ? "footer-logo-image" : "logo-image-wrap"}>
       {!imageError ? (
         <img
-          src="/wood-space-mark-transparent.png"
-          alt="Wood & Space logo"
+          src="/favicon-logo.png"
+          alt="Sawant & Associates logo"
           onError={() => setImageError(true)}
         />
       ) : (
